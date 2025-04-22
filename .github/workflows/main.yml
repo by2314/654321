@@ -56,7 +56,8 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle', '**/*.kts', 'local.properties', 'build.gradle.kts') }}
+          restore-keys: ${{ runner.os }}-gradle-
       - name: Gradle prebuild
         run: |
           echo 'org.gradle.jvmargs=-Xmx2048m' >> gradle.properties
